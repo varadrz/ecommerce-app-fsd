@@ -1,16 +1,21 @@
+import { useCart } from "../context/CartContext"
+
 export default function ProductModal({ product, onClose }) {
 
+  const { addToCart } = useCart()
 
   if (!product) return null
 
   return (
     <div
-    className="modal fade show"
-    style={{ display: "block", background: "rgba(0,0,0,0.5)" }}
-    onClick={onClose}
+      className="modal fade show"
+      style={{ display: "block", background: "rgba(0,0,0,0.5)" }}
+      onClick={onClose}
     >
-    
-    <div className="modal-dialog modal-lg modal-dialog-centered">
+      <div
+        className="modal-dialog modal-lg modal-dialog-centered"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="modal-content">
 
           <div className="modal-header">
@@ -20,6 +25,7 @@ export default function ProductModal({ product, onClose }) {
 
           <div className="modal-body">
             <div className="row">
+
               <div className="col-md-6">
                 <img
                   src={product.thumbnail}
@@ -39,10 +45,18 @@ export default function ProductModal({ product, onClose }) {
                   }).format(product.price * 83)}
                 </h4>
 
-                <button className="btn btn-dark mt-3">
+                <button
+                  className="btn btn-dark mt-3"
+                  onClick={() => {
+                    addToCart(product)
+                    onClose()
+                  }}
+                >
                   Add to Cart
                 </button>
+
               </div>
+
             </div>
           </div>
 
