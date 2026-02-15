@@ -42,7 +42,7 @@ export default function Navbar() {
               Logout
             </button>
           ) : (
-            <Link to="/login" className="btn btn-outline-light">
+            <Link to="/auth" className="btn btn-outline-light">
               Login
             </Link>
           )}

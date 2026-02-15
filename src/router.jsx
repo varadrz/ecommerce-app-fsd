@@ -6,12 +6,19 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Checkout from "./pages/Checkout"
 import ProductDetails from "./pages/ProductDetails"
+import Auth from "./pages/Auth"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout><Home /></MainLayout>,
   },
+
+  {
+  path: "/auth",
+  element: <MainLayout><Auth /></MainLayout>,
+},
+
   {
     path: "/cart",
     element: <MainLayout><Cart /></MainLayout>,
